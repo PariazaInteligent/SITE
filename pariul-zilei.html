@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<base href="/pariul-zilei.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pariază Inteligent - Pariul Zilei</title>
+<style>
+/* Include CSS-ul aici */
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a0933;
+  color: #ffffff;
+}
+header {
+  background-color: rgba(43, 14, 74, 0.8);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff6600;
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+}
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #ff6600;
+}
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+.auth-button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.login-button {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+.login-button:hover {
+  background-color: #ffffff;
+  color: #1a0933;
+}
+.register-button {
+  background-color: #ff6600;
+  color: #ffffff;
+  border: 2px solid #ff6600;
+}
+.register-button:hover {
+  background-color: #ff8533;
+  border-color: #ff8533;
+}
+.container {
+  max-width: 1200px;
+  margin: 100px auto 0;
+  padding: 2rem;
+}
+h1 {
+  color: #ff6600;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3.8rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.date-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  overflow-x: auto; /* Adaugă această linie pentru a permite defilarea orizontală */
+  padding: 0 1rem;
+}
+
+.date-nav button {
+  background-color: rgba(43, 14, 74, 0.8);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 0.5rem; /* Adaugă un spațiu între butoane */
+  white-space: nowrap; /* Asigură-te că textul nu se sparge pe mai multe linii */
+}
+
+.date-nav button:hover, .date-nav button.active {
+  background-color: #ff6600;
+}
+.bet-card {
+  background-color: #2b0e4a;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden; /* Asigură-te că părțile blurate și lacătul sunt conținute */
+  cursor: pointer; /* Adaugă cursor pointer pentru cardurile de pariuri */
+}
+.bet-content.blur-content {
+  filter: blur(15px); /* Crește intensitatea blurului */
+  transition: filter 0.3s ease;
+}
+.lock-icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  z-index: 2; /* Asigură-te că lacătul este deasupra părții blurate */
+}
+.lock-icon {
+  font-size: 2rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 3; /* Asigură-te că lacătul este deasupra containerului său */
+}
+.lock-message {
+  font-size: 0.8rem;
+  color: #ff6600;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.bet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.bet-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.bet-date {
+  font-size: 1rem;
+  color: #ff6600;
+}
+.bet-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.team {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.vs {
+  font-size: 1.2rem;
+  color: #ff6600;
+  margin: 0 1rem;
+}
+.bet-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bet-type, .bet-odds {
+  font-size: 1.1rem;
+}
+.bet-odds {
+  color: #ff6600;
+  font-weight: bold;
+}
+.ai-confidence {
+  background-color: #4a0e8a;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+.bet-status {
+  display: block;
+  width: 100%;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: default;
+}
+.bet-status.in-joc {
+  background-color: #ff6600;
+}
+.bet-status.active {
+  background-color: #808080; /* gri */
+}
+.bet-status.win {
+  background-color: #4caf50;
+}
+.bet-status.lost {
+  background-color: #f44336;
+}
+.bet-status.started {
+  background-color: #ffcc00; /* fundal galben pentru MECI INCEPUT */
+}
+.view-analysis {
+  font-size: 0.8rem;
+  color: #ff6600;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background-color: #2b0e4a;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  width: 30%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.stat-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #ff6600;
+}
+.stat-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid #ff6600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 9, 51, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  display: none;
+}
+.loading-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-spinner div {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #ff6600 transparent transparent transparent;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.loading-spinner div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-spinner div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-spinner div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Butonul ON/OFF */
+.switch-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f44336; /* roșu pentru OFF */
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4caf50; /* verde pentru ON */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1rem;
+  }
+  nav {
+    flex-direction: column;
+    width: 100%;
+    display: none; /* Ascunde meniul în mod implicit */
+  }
+  nav a {
+    padding: 0.5rem 0;
+  }
+  .menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+  }
+  .auth-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .stats-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .stat-card {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+  .date-nav {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .date-nav button {
+    margin: 0 0.5rem;
+  }
+  .date-nav button:last-child {
+    margin-right: 0;
+  }
+  .date-nav button:first-child {
+    margin-left: 0;
+  }
+  .date-nav::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Stil pentru cursorul animat */
+#analysisText::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: #ff6600;
+    margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+/* Stilul pentru modal (pop-up) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 3000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.8); /* fundal întunecat transparent */
+}
+
+.modal-content {
+  background-color: #2b0e4a;
+  margin: 15% auto; /* poziționează în centrul ecranului */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+  max-width: 600px; /* dimensiunea maximă a modalului */
+  border-radius: 10px;
+  color: #ffffff;
+  position: relative;
+  max-height: 80vh; /* înălțime maximă pentru conținutul modalului */
+  overflow-y: auto; /* permite derularea pe axa Y dacă conținutul este mare */
+}
+
+.close {
+  color: #ff6600;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #ff8533;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html" class="logo">INTELIGENT</a>
+      <span class="menu-toggle">&#9776;</span>
+      <nav>
+        <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html">ACASĂ</a>
+        <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/pariul-zilei.html">PARIUL ZILEI</a>
+        <a href="/">TOATE MECIURILE</a>
+        <a href="/">PROGRES</a>
+        <a href="/">HIT&amp;WIN</a>
+        <a href="/">TUTORIAL</a>
+        <a href="/">BLOG</a>
+      </nav>
+      <div class="auth-buttons">
+        <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/logare.html" class="auth-button login-button">LOG IN</a>
+        <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/inregistrare.html" class="auth-button register-button">REGISTER</a>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container">
+    <h1>Pariul Zilei</h1>
+    <div class="date-nav" id="date-nav"></div>
+    <div class="stats-container" id="stats-container">
+      <div class="stat-card">
+        <div class="stat-title">Pronosticuri</div>
+        <div class="stat-circle">
+          <div class="stat-value" id="bankers-count">0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Viitoare</div>
+        <div class="stat-circle">
+          <div class="stat-value" id="upcoming-count">0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Rată de Succes</div>
+        <div class="stat-circle">
+          <div class="stat-value" id="success-rate">0%</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Butonul ON/OFF -->
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" id="blur-toggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div id="bets-container"></div>
+    <div id="no-bets-message" style="display: none; text-align: center; margin-top: 2rem;">
+Ei bine, astăzi pare că fotbalul a luat o pauză și s-a dus la o cafea! ☕️ </br>Fără meciuri analizate astăzi, dar nu disperați, fotbalul se întoarce mai târziu! ⚽️ </br>Dacă simțiți că ceva nu e în regulă, sunați la "Asistența pentru Fotbal Fără Meciuri"! 📞 </br></br></br></br></br></br></br>#FotbalFărăMeciuri #PauzăDeCafea    </div>
+  </div>
+
+  <!-- Modal pentru analiză -->
+  <div id="analysisModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Analiza Meciului</h2>
+      <p id="analysisText"></p>
+    </div>
+  </div>
+
+  <div class="loading-overlay">
+    <div class="loading-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script>
+    function calculateTimeDifference(startDate) {
+      const now = new Date();
+      const start = new Date(startDate);
+      const diff = start - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      return { days, hours, minutes, seconds, diff };
+    }
+
+    function typeWriter(text, element, speed = 1) {
+    let i = 0;
+    let tag = false;
+    let output = '';
+    
+    function type() {
+        if (i < text.length) {
+            let currentChar = text.charAt(i);
+
+            if (currentChar === '<') {
+                tag = true;
+            } else if (currentChar === '>') {
+                tag = false;
+            }
+
+            output += currentChar;
+            element.innerHTML = output;
+            i++;
+            
+            if (tag) {
+                type();  // Continue immediately if inside a tag
+            } else {
+                setTimeout(type, speed);
+            }
+
+            // Derulează automat modalul pe măsură ce se adaugă text
+            element.parentNode.scrollTop = element.parentNode.scrollHeight;
+        }
+    }
+    
+    type();
+}
+
+
+    function addClickEventToBetCard(betCard, analysis) {
+    betCard.addEventListener('click', () => {
+        const analysisElement = document.getElementById('analysisText');
+
+        // Înlocuiește \n cu <br> și cuvintele între ** ** cu <strong>
+        let formattedAnalysis = analysis
+            .replace(/\n/g, '<br>') // Înlocuiește \n cu <br>
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Îngroașă textul între ** **
+
+        document.getElementById('analysisModal').style.display = 'block';
+
+        // Apelează funcția de scriere
+        typeWriter(formattedAnalysis, analysisElement, 30);  // viteza 30ms per literă
+    });
+}
+
+// Închiderea modalului când se apasă pe butonul "close" sau pe fundalul întunecat
+document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('analysisModal').style.display = 'none';
+});
+
+window.onclick = function(event) {
+    const modal = document.getElementById('analysisModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+};
+
+
+
+    function populateBets(date) {
+      const blurEnabled = document.getElementById('blur-toggle').checked;
+      fetch(`http://localhost:8000/pariul-zilei-date/pariu_zilei-${date}.json`)
+        .then(response => response.json())
+        .then(data => {
+          const betsContainer = document.getElementById('bets-container');
+          const bankersCount = document.getElementById('bankers-count');
+          const upcomingCount = document.getElementById('upcoming-count');
+          const successRate = document.getElementById('success-rate');
+          const statsContainer = document.getElementById('stats-container');
+          const noBetsMessage = document.getElementById('no-bets-message');
+
+          betsContainer.innerHTML = '';
+
+          if (data.length === 0) {
+            noBetsMessage.style.display = 'block';
+            statsContainer.style.display = 'none';
+          } else {
+            noBetsMessage.style.display = 'none';
+            statsContainer.style.display = 'flex';
+          }
+
+          let totalBets = data.length;
+          let upcomingBets = data.filter(bet => bet["bet.Stare"] === "IN JOC" || bet["bet.Stare"] === "MECI INCEPUT").length;
+          let winBets = data.filter(bet => bet["bet.Stare"] === "WIN").length;
+          let lostBets = data.filter(bet => bet["bet.Stare"] === "LOST").length;
+
+          // Calculate success rate
+          let successRateValue = (winBets / (winBets + lostBets)) * 100;
+          successRateValue = isNaN(successRateValue) ? 0 : successRateValue;
+
+          // Populate bet cards
+          data.forEach(bet => {
+            const betCard = document.createElement('div');
+            betCard.className = `bet-card`;
+            betCard.innerHTML = `
+              <div class="bet-content ${blurEnabled && bet["bet.Stare"] === "IN JOC" ? 'blur-content' : ''}">
+                <div class="bet-header">
+                  <div class="bet-title">${bet["bet.Campionatul"]}</div>
+                  <div class="bet-date">${bet["bet.Data"]} ${bet["bet.Ora"]}</div>
+                </div>
+                <div class="bet-details">
+                  <div class="team">${bet["bet.Echipa1"]}</div>
+                  <div class="vs">vs</div>
+                  <div class="team">${bet["bet.Echipa2"]}</div>
+                </div>
+                <div class="bet-info">
+                  <div class="bet-type">${bet["bet.Pronostic"]}</div>
+                  <div class="bet-odds">${bet["bet.Cota"]}</div>
+                  <div class="ai-confidence">${bet["bet.Incredere"]}</div>
+                </div>
+                <div class="bet-status ${bet["bet.Stare"].toLowerCase().replace(' ', '-')}">
+                  ${bet["bet.Stare"] === "IN JOC" ? `INCEPE IN <span id="timer-${bet["bet.Data"]}-${bet["bet.Ora"]}"></span>` : bet["bet.Stare"]}
+                </div>
+                ${bet["bet.Stare"] !== "IN JOC" || !blurEnabled ? '<div class="view-analysis">⚽️ Click pe card și hai să vedem ce analize ne așteaptă! 🤩</div>' : ''}
+              </div>
+              ${blurEnabled && bet["bet.Stare"] === "IN JOC" ? '<div class="lock-icon-container"><div class="lock-icon" onclick="window.location.href=\'/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/inregistrare.html\'">🔒</div><div class="lock-message">Când vrei să vezi viitorul, dar site-ul cere autentificare... 🧐</div></div>' : ''}
+            `;
+            betsContainer.appendChild(betCard);
+
+            if (bet["bet.Stare"] === "IN JOC") {
+              const timerElement = document.getElementById(`timer-${bet["bet.Data"]}-${bet["bet.Ora"]}`);
+              const startDateTime = `${bet["bet.Data"]}T${bet["bet.Ora"]}:00`;
+              const interval = setInterval(() => {
+                const timeLeft = calculateTimeDifference(startDateTime);
+                if (timeLeft.diff > 0) {
+                  timerElement.innerHTML = `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`;
+                } else {
+                  clearInterval(interval);
+                  const betStatusElement = timerElement.parentNode;
+                  betStatusElement.innerHTML = 'MECI INCEPUT';
+                  betStatusElement.classList.remove('in-joc');
+                  betStatusElement.classList.add('started');
+                  betCard.querySelector('.bet-content').classList.remove('blur-content');
+                  const lockIconContainer = betCard.querySelector('.lock-icon-container');
+                  if (lockIconContainer) lockIconContainer.remove();
+                  // Add view analysis text when status changes to MECI INCEPUT
+                  const viewAnalysisText = document.createElement('div');
+                  viewAnalysisText.className = 'view-analysis';
+                  viewAnalysisText.textContent = '️⚽️ Click pe card și hai să vedem ce analize ne așteaptă! 🤩';
+                  betCard.querySelector('.bet-content').appendChild(viewAnalysisText);
+                  addClickEventToBetCard(betCard, bet["bet.Analiza"]); // Add click event when status changes
+                }
+              }, 1000);
+            }
+
+            // Add click event listener for the bet card to show analysis
+            addClickEventToBetCard(betCard, bet["bet.Analiza"]);
+          });
+
+          // Populate stats
+          bankersCount.textContent = totalBets;
+          upcomingCount.textContent = upcomingBets;
+          successRate.textContent = `${successRateValue.toFixed(2)}%`;
+
+        })
+        .catch(error => {
+          console.error('Error fetching bet data:', error);
+          const betsContainer = document.getElementById('bets-container');
+          const statsContainer = document.getElementById('stats-container');
+          const noBetsMessage = document.getElementById('no-bets-message');
+
+          betsContainer.innerHTML = '';
+          noBetsMessage.style.display = 'block';
+          statsContainer.style.display = 'none';
+        });
+    }
+
+    function updateDateNav() {
+      const dateNav = document.getElementById('date-nav');
+      dateNav.innerHTML = '';
+
+      const today = new Date();
+      for (let i = -3; i <= 3; i++) {
+        const date = new Date(today);
+        date.setDate(today.getDate() + i);
+
+        const day = date.getDate();
+        const month = date.toLocaleString('default', { month: 'long' });
+        const buttonText = i === 0 ? 'Astăzi' : i === -1 ? 'Ieri' : i === 1 ? 'Mâine' : `${day} ${month}`;
+
+        const button = document.createElement('button');
+        button.textContent = buttonText;
+        button.className = i === 0 ? 'active' : '';
+        button.dataset.date = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        dateNav.appendChild(button);
+      }
+
+      document.querySelectorAll('.date-nav button').forEach(button => {
+        button.addEventListener('click', function() {
+          document.querySelectorAll('.date-nav button').forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          const selectedDate = this.dataset.date;
+          populateBets(selectedDate);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateDateNav();
+      const today = new Date();
+      const dateString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+      populateBets(dateString);
+    });
+
+    document.getElementById('blur-toggle').addEventListener('change', () => {
+      const activeDate = document.querySelector('.date-nav .active').dataset.date;
+      populateBets(activeDate);
+    });
+
+    window.addEventListener('load', () => {
+      const overlay = document.querySelector('.loading-overlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 1000);
+    });
+
+    // Script pentru a controla meniul pe mobil
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('nav').classList.toggle('active');
+    });
+
+    // Script pentru a închide modalul
+    document.querySelector('.close').addEventListener('click', () => {
+      document.getElementById('analysisModal').style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('analysisModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    };
+</script>
+
+
+</body>
+</html>

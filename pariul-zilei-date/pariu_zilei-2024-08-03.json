@@ -1,0 +1,26 @@
+[
+  {
+    "bet.Data": "2024-08-04",
+    "bet.Campionatul": "Liga Campionilor UEFA",
+    "bet.Echipa1": "Ieri",
+    "bet.Echipa2": "Test",
+    "bet.Pronostic": "Victorie Manchester City",
+    "bet.Cota": 2.1,
+    "bet.Incredere": "AI Confidence: 87%",
+    "bet.Stare": "IN JOC",
+    "bet.Ora": "15:00",
+    "bet.Analiza": "Manchester City a câștigat ultimele 5 meciuri împotriva echipelor din La Liga și are o formă excelentă acasă."
+  },
+  {
+    "bet.Data": "2024-08-04",
+    "bet.Campionatul": "Liga 1",
+    "bet.Echipa1": "FCSB",
+    "bet.Echipa2": "Steaua",
+    "bet.Pronostic": "Penalty acordat",
+    "bet.Cota": 3.1,
+    "bet.Incredere": "AI Confidence: 78%",
+    "bet.Stare": "WIN",
+    "bet.Ora": "17:00",
+    "bet.Analiza": "Steaua a avut în medie 2 penalty-uri pe meci în ultimele 5 întâlniri directe cu FCSB."
+  }
+]

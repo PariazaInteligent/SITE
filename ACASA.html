@@ -1,0 +1,312 @@
+<!DOCTYPE html><html><head><base href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PariazaInteligent - Viitorul Predicțiilor Fotbalistice</title>
+<style>
+body.hidden {
+  opacity: 1;
+  pointer-events: none;
+}
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 9, 51, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  display: none;
+}
+.loading-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-spinner div {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #ff6600 transparent transparent transparent;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.loading-spinner div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-spinner div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-spinner div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a0933;
+  color: #ffffff;
+}
+header {
+  background-color: rgba(43, 14, 74, 0.8);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff6600;
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+}
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #ff6600;
+}
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+.auth-button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.login-button {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+.login-button:hover {
+  background-color: #ffffff;
+  color: #1a0933;
+}
+.register-button {
+  background-color: #ff6600;
+  color: #ffffff;
+  border: 2px solid #ff6600;
+}
+.register-button:hover {
+  background-color: #ff8533;
+  border-color: #ff8533;
+}
+.hero {
+  background-image: linear-gradient(rgba(26, 9, 51, 0.7), rgba(26, 9, 51, 0.7)), url('https://i.ibb.co/7kBLRBk/2cbf4ee0-fa76-4f0d-b6e7-25d2b2e745d7.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 60px;
+}
+h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.orange-text {
+  color: #ff6600;
+}
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+.cta-button {
+  background-color: #ff6600;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+}
+.cta-button:hover {
+  background-color: #ff8533;
+  transform: scale(1.05);
+}
+.player-silhouettes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 20;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Media Queries pentru dispozitive mobile */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1rem;
+  }
+  nav {
+    flex-direction: column;
+    width: 100%;
+    display: none; /* Ascunde meniul în mod implicit */
+  }
+  nav a {
+    padding: 0.5rem 0;
+  }
+  .menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+  }
+  .auth-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
+
+/* Clase suplimentare pentru a gestiona meniul */
+.menu-toggle.active + nav {
+  display: flex;
+}
+</style>
+
+<header>
+  <div class="header-content">
+    <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html" class="logo">INTELIGENT</a>
+    <span class="menu-toggle">&#9776;</span>
+    <nav>
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html">ACASĂ</a>
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/pariul-zilei.html">PARIUL ZILEI</a>
+      <a href="/">TOATE MECIURILE</a>
+      <a href="/">PROGRES</a>
+      <a href="/">HIT&amp;WIN</a>
+      <a href="/">TUTORIAL</a>
+      <a href="/">BLOG</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/logare.html" class="auth-button login-button">LOG IN</a>
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/inregistrare.html" class="auth-button register-button">REGISTER</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Script pentru a controla meniul pe mobil
+  document.querySelector('.menu-toggle').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('nav').classList.toggle('active');
+  });
+</script>
+
+</head>
+<body>
+  
+ 
+  
+  <main class="hero">
+    <h1>VIITORUL</h1>
+    <h1 class="orange-text">FOTBALULUI</h1>
+    <h1>ESTE AICI</h1>
+    <p>ⓘ Susținut de Inteligența Artificială</p>
+    <button class="cta-button">ÎNCEPE ACUM!</button>
+    
+    <svg class="player-silhouettes" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="player-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#4a0e8a;stop-opacity:0.6"></stop>
+          <stop offset="100%" style="stop-color:#2b0e4a;stop-opacity:0.3"></stop>
+        </linearGradient>
+      </defs>
+      <g fill="url(#player-gradient)">
+        <path d="M200,800 Q300,750 250,650 T200,500 T150,350 T100,200"></path>
+        <path d="M400,900 Q500,850 450,750 T400,600 T350,450 T300,300"></path>
+        <path d="M600,950 Q700,900 650,800 T600,650 T550,500 T500,350"></path>
+        <path d="M800,850 Q900,800 850,700 T800,550 T750,400 T700,250"></path>
+      </g>
+    </svg>
+  </main>
+
+  <script>
+    document.querySelector('.cta-button').addEventListener('click', function() {
+      window.location.href = 'file:///C:/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/incepe-acum.html';
+    });
+
+    function animatePlayers() {
+      const players = document.querySelectorAll('.player-silhouettes path');
+      players.forEach((player, index) => {
+        player.style.animation = `float ${3 + index * 0.5}s ease-in-out infinite alternate`;
+      });
+    }
+
+    animatePlayers();
+  </script>
+  
+  <div class="loading-overlay">
+  <div class="loading-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('hidden');
+});
+
+window.addEventListener('load', () => {
+  const overlay = document.querySelector('.loading-overlay');
+  overlay.style.display = 'flex';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    document.body.classList.remove('hidden');
+  }, 1000);
+});
+
+ </script>
+  
+
+</body></html>

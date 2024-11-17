@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<base href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/parola-pierduta.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parolă uitată - Pariază Inteligent</title>
+<style>
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a0933;
+  color: #ffffff;
+  background-image: url('https://nerdytips.com/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+header {
+  background-color: rgba(26, 9, 51, 0.9);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff6600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+}
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #ff6600;
+}
+main {
+  max-width: 400px;
+  margin: 100px auto 0;
+  padding: 2rem;
+  background-color: rgba(26, 9, 51, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+}
+h1 {
+  font-size: 2.5rem;
+  color: #ff6600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+label {
+  font-weight: bold;
+  color: #ff6600;
+}
+input {
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+input:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+button {
+  background-color: #ff6600;
+  color: #ffffff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #ff8533;
+}
+.register-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+.register-link a {
+  color: #ff6600;
+  text-decoration: none;
+}
+.register-link a:hover {
+  text-decoration: underline;
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.checkbox-container input[type="checkbox"] {
+  margin-right: 10px;
+}
+.checkbox-container label {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+.forgot-password {
+  text-align: right;
+  margin-top: 0.5rem;
+}
+.forgot-password a {
+  color: #ff6600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 9, 51, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  display: none;
+}
+.loading-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-spinner div {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #ff6600 transparent transparent transparent;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.loading-spinner div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-spinner div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-spinner div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html" class="logo">INTELIGENT</a>
+      <span class="menu-toggle">&#9776;</span>
+      <nav>
+        <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html">ACASĂ</a>
+        <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/pariul-zilei.html">PARIUL ZILEI</a>
+        <a href="/">TOATE MECIURILE</a>
+        <a href="/">PROGRES</a>
+        <a href="/">HIT&amp;WIN</a>
+        <a href="/">TUTORIAL</a>
+        <a href="/">BLOG</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Parolă uitată</h1>
+    <div class="message">
+      Introdu adresa ta de email mai jos. Îți vom trimite un link pentru a reseta parola.
+    </div></br>
+    <form id="forgot-password-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <button type="submit">Resetează Parola</button>
+    </form></br>
+    <div class="login-link">
+      Îți amintești parola? <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/logare.html">Logare</a>
+    </div>
+  </main>
+  <div class="loading-overlay">
+    <div class="loading-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('forgot-password-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+
+      console.log('Password reset requested for:', email);
+
+      // Aici ar trebui să trimiți o cerere către serverul tău pentru a iniția procesul de resetare a parolei
+      // Pentru acest exemplu, vom simula doar o solicitare reușită
+      alert('Link-ul pentru resetarea parolei a fost trimis la adresa ta de email. Verifică-ți inboxul.');
+      window.location.href = '/login';
+    });
+    window.addEventListener('load', () => {
+      const overlay = document.querySelector('.loading-overlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

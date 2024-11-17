@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<base href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/termenii-si-conditiile.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termeni și Condiții - Pariază Inteligent</title>
+<style>
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a0933;
+  color: #ffffff;
+}
+header {
+  background-color: rgba(43, 14, 74, 0.8);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff6600;
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+}
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #ff6600;
+}
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+.auth-button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.login-button {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+.login-button:hover {
+  background-color: #ffffff;
+  color: #1a0933;
+}
+.register-button {
+  background-color: #ff6600;
+  color: #ffffff;
+  border: 2px solid #ff6600;
+}
+.register-button:hover {
+  background-color: #ff8533;
+  border-color: #ff8533;
+}
+.hero {
+  background-image: linear-gradient(rgba(26, 9, 51, 0.7), rgba(26, 9, 51, 0.7)), url('https://i.ibb.co/7kBLRBk/2cbf4ee0-fa76-4f0d-b6e7-25d2b2e745d7.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 60px;
+}
+h1 {
+color: #ff6600;
+  font-size: 3.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.orange-text {
+  color: #ff6600;
+}
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+.cta-button {
+  background-color: #ff6600;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+}
+.cta-button:hover {
+  background-color: #ff8533;
+  transform: scale(1.05);
+}
+.player-silhouettes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 20;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+main {
+  max-width: 800px;
+  margin: 100px auto 0;
+  padding: 2rem;
+}
+.step {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.step h2 {
+  color: #ff6600;
+  margin-top: 0;
+}
+.step p {
+  margin-bottom: 1rem;
+}
+.cta-button {
+  display: inline-block;
+  background-color: #ff6600;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+  background-color: #ff8533;
+}
+
+/* Media Queries pentru dispozitive mobile */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1rem;
+  }
+  nav {
+    flex-direction: column;
+    width: 100%;
+    display: none; /* Ascunde meniul în mod implicit */
+  }
+  nav a {
+    padding: 0.5rem 0;
+  }
+  .menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+  }
+  .auth-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
+
+/* Clase suplimentare pentru a gestiona meniul */
+.menu-toggle.active + nav {
+  display: flex;
+}
+</style>
+<style>
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a0933;
+  color: #ffffff;
+}
+header {
+  background-color: rgba(26, 9, 51, 0.9);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff6600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+}
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #ff6600;
+}
+main {
+  max-width: 800px;
+  margin: 100px auto 0;
+  padding: 2rem;
+  background-color: rgba(26, 9, 51, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+}
+h1 {
+  font-size: 2.5rem;
+  color: #ff6600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+h2 {
+  font-size: 1.8rem;
+  color: #ff6600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), inflate 0.5s forwards 3s;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes inflate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+ul {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+li {
+  margin-bottom: 0.5rem;
+}
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #ff6600;
+  margin-bottom: 2rem;
+}
+.breadcrumb a {
+  color: #ff6600;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.selected-text {
+  color: #ffffff;
+  background-color: rgba(255, 102, 0, 0.3);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 9, 51, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  display: none;
+}
+.loading-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-spinner div {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #ff6600 transparent transparent transparent;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.loading-spinner div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-spinner div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-spinner div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+</head>
+<body>
+  <header>
+  <div class="header-content">
+    <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html" class="logo">INTELIGENT</a>
+    <span class="menu-toggle">&#9776;</span>
+    <nav>
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html">ACASĂ</a>
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/pariul-zilei.html">PARIUL ZILEI</a>
+      <a href="/">TOATE MECIURILE</a>
+      <a href="/">PROGRES</a>
+      <a href="/">HIT&amp;WIN</a>
+      <a href="/">TUTORIAL</a>
+      <a href="/">BLOG</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/logare.html" class="auth-button login-button">LOG IN</a>
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/inregistrare.html" class="auth-button register-button">REGISTER</a>
+    </div>
+  </div>
+</header>
+
+  <main>
+    <h1>Termeni și Condiții</h1>
+    <div class="breadcrumb">
+      <a href="/Users/Alex/Desktop/Pariaza%20Inteligent/SITE/ACASA.html">Acasă</a>
+      <span class="selected-text">/ Termeni și Condiții</span>
+    </div>
+
+    <h2>Introducere</h2>
+    <p>Bine ați venit la Pariază Inteligent. Prin utilizarea site-ului nostru și a serviciilor noastre, sunteți de acord să respectați și să fiți legat de următorii termeni și condiții. Vă rugăm să îi citiți cu atenție înainte de a utiliza platforma noastră.</p>
+
+    <h2>Utilizatori Permiși</h2>
+    <p>Serviciile noastre sunt destinate utilizatorilor care au cel puțin 18 ani. Prin utilizarea Pariază Inteligent, confirmați că îndepliniți această cerință de vârstă.</p>
+
+    <h2>Integrarea cu Terți</h2>
+    <p>Pariază Inteligent poate integra servicii terțe. Utilizarea acestor integrări este supusă termenilor și condițiilor respectivelor servicii.</p>
+
+    <h2>Încrederea în Informațiile Noastre</h2>
+    <p>Deși ne străduim să furnizăm informații exacte și actualizate, nu putem garanta exactitatea tuturor conținuturilor. Utilizatorii ar trebui să folosească propriul discernământ atunci când iau decizii bazate pe sfaturile și predicțiile noastre.</p>
+
+    <h2>Politica de Utilizare Acceptabilă</h2>
+    <p>Utilizatorii Pariază Inteligent sunt așteptați să:</p>
+    <ul>
+      <li>Furnizeze informații corecte la înregistrare</li>
+      <li>Utilizeze serviciul doar în scopuri personale, necomerciale</li>
+      <li>Se abțină de la încercarea de a manipula sau abuza sistemul</li>
+      <li>Nu se angajeze în activități ilegale prin intermediul platformei noastre</li>
+    </ul>
+
+    <h2>Drepturi de Proprietate Intelectuală</h2>
+    <p>Toate conținuturile de pe Pariază Inteligent, inclusiv, dar fără a se limita la text, grafice, logo-uri și software, sunt proprietatea Pariază Inteligent și sunt protejate de legile dreptului de autor.</p>
+
+    <h2>Taxe pentru Utilizatori</h2>
+    <p>Unele caracteristici ale Pariază Inteligent pot necesita plată. Toate taxele vor fi comunicate clar înainte de procesarea oricărei tranzacții.</p>
+
+    <h2>Furnizori de Plăți</h2>
+    <p>Utilizăm procesoare de plăți terțe sigure. Prin efectuarea unei plăți, sunteți de acord cu termenii de serviciu ai acestora.</p>
+
+    <h2>Anularea Abonamentului</h2>
+    <p>Utilizatorii pot anula abonamentul în orice moment. Rambursările vor fi gestionate conform politicii noastre de rambursare.</p>
+
+    <h2>Rambursare</h2>
+    <p>Cererile de rambursare vor fi luate în considerare de la caz la caz. Vă rugăm să contactați echipa noastră de suport pentru mai multe informații.</p>
+
+    <h2>Disponibilitatea Serviciului</h2>
+    <p>Ne străduim să menținem disponibilitatea serviciilor noastre 24/7, dar nu putem garanta accesul neîntrerupt din cauza întreținerii sau circumstanțelor neprevăzute.</p>
+
+    <h2>Răspundere</h2>
+    <p>Pariază Inteligent nu este responsabil pentru pierderile suferite ca urmare a utilizării serviciilor noastre. Utilizatorii sunt responsabili pentru propriile decizii de pariere.</p>
+
+    <p>Prin utilizarea Pariază Inteligent, recunoașteți că ați citit, înțeles și sunteți de acord să respectați acești termeni și condiții.</p>
+  </main>
+
+  <div class="loading-overlay">
+    <div class="loading-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script>
+  window.addEventListener('load', () => {
+  const overlay = document.querySelector('.loading-overlay');
+  overlay.style.display = 'flex';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 1000);
+});
+
+
+
+  </script>
+  
+</body>
+</html>

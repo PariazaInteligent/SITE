@@ -1,0 +1,260 @@
+<html><head><base href="https://nerdytips.com/all-matches">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NerdyTips - All Matches</title>
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a0933;
+  color: #ffffff;
+}
+header {
+  background-color: #2b0e4a;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6600;
+}
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-weight: bold;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+h1 {
+  color: #ff6600;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.date-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.date-nav button {
+  background-color: #4a0e8a;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.date-nav button.active {
+  background-color: #ff6600;
+}
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background-color: #2b0e4a;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  margin: 0 0.5rem;
+}
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff6600;
+}
+.matches-container {
+  background-color: #2b0e4a;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.filter-input {
+  background-color: #4a0e8a;
+  border: none;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #4a0e8a;
+}
+th {
+  background-color: #4a0e8a;
+  color: #ffffff;
+}
+.team-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.odd {
+  font-weight: bold;
+  color: #ff6600;
+}
+.trust-meter {
+  width: 50px;
+  height: 10px;
+  background-color: #4a0e8a;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.trust-fill {
+  height: 100%;
+  background-color: #ff6600;
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">NERDYTIPS</div>
+    <nav>
+      <a href="/">ACASĂ</a>
+      <a href="/bet-of-the-day">PARIUL ZILEI</a>
+      <a href="/all-matches">TOATE MECIURILE</a>
+      <a href="/progress">PROGRES</a>
+      <a href="/hit-and-win">HIT&WIN</a>
+      <a href="/tutorial">TUTORIAL</a>
+      <a href="/blog">BLOG</a>
+      <a href="/login">LOG IN</a>
+      <a href="/register">ÎNREGISTRARE</a>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <h1>Toate Meciurile</h1>
+    
+    <div class="date-nav">
+      <button>1 August</button>
+      <button>2 August</button>
+      <button>Ieri</button>
+      <button class="active">Astăzi</button>
+      <button>Mâine</button>
+      <button>6 August</button>
+      <button>7 August</button>
+    </div>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">248</div>
+        <div>Meciuri Prezise</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">209</div>
+        <div>Meciuri Viitoare</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">27</div>
+        <div>Meciuri Câștigate</div>
+      </div>
+    </div>
+    
+    <div class="matches-container">
+      <div class="filters">
+        <input type="text" class="filter-input" placeholder="Caută...">
+        <select class="filter-input">
+          <option>Argentina - Liga Profesional Argentina</option>
+          <option>Anglia - Premier League</option>
+          <option>Spania - La Liga</option>
+          <option>Germania - Bundesliga</option>
+          <option>Italia - Serie A</option>
+        </select>
+        <select class="filter-input">
+          <option>Sortează după</option>
+          <option>Dată</option>
+          <option>Cotă</option>
+          <option>Încredere AI</option>
+        </select>
+        <button class="filter-input">Aplică Filtre</button>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Dată</th>
+            <th>Meci</th>
+            <th>1</th>
+            <th>X</th>
+            <th>2</th>
+            <th>Sfat</th>
+            <th>Goluri</th>
+            <th>GG</th>
+            <th>Cel mai bun sfat</th>
+            <th>Încredere AI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>00:15</td>
+            <td>
+              <img src="https://example.com/independiente.png" alt="Independiente logo" class="team-logo">
+              Independiente vs
+              <img src="https://example.com/sanlorenzo.png" alt="San Lorenzo logo" class="team-logo">
+              San Lorenzo
+            </td>
+            <td class="odd">2.3</td>
+            <td class="odd">2.9</td>
+            <td class="odd">3.6</td>
+            <td>2</td>
+            <td>U2.5</td>
+            <td>NO</td>
+            <td>U2.5</td>
+            <td>
+              <div class="trust-meter">
+                <div class="trust-fill" style="width: 75%;"></div>
+              </div>
+              7.5/10
+            </td>
+          </tr>
+          <tr>
+            <td>01:30</td>
+            <td>
+              <img src="https://example.com/huracan.png" alt="Huracan logo" class="team-logo">
+              Huracan vs
+              <img src="https://example.com/racing.png" alt="Racing Club logo" class="team-logo">
+              Racing Club
+            </td>
+            <td class="odd">2.5</td>
+            <td class="odd">3.0</td>
+            <td class="odd">2.9</td>
+            <td>X2</td>
+            <td>U2.5</td>
+            <td>NO</td>
+            <td>U2.5</td>
+            <td>
+              <div class="trust-meter">
+                <div class="trust-fill" style="width: 63%;"></div>
+              </div>
+              6.3/10
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Here you would add JavaScript for interactivity, such as
+    // handling date navigation, applying filters, and sorting.
+  </script>
+</body></html>
