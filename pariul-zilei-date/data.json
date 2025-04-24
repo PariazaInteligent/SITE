@@ -2,7 +2,7 @@ const dashboardData = {
   balance: 500,
   totalProfit: 100,
   averageROI: 8.8,
-  numberOfTrades: 290,
+  numberOfTrades: 300,
   openTurnover: 401,
   openTrades: 162,
   settledTurnover: 1134,
