@@ -1,0 +1,11 @@
+const dashboardData = {
+  balance: 500,
+  totalProfit: 100,
+  averageROI: 8.8,
+  numberOfTrades: 290,
+  openTurnover: 401,
+  openTrades: 162,
+  settledTurnover: 1134,
+  fundGrowth: 20.0,
+  fees: 40.0
+};
