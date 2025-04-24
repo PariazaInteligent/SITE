@@ -1,26 +1,9 @@
 [
   {
-    "bet.Data": "2025-03-23",
-    "bet.Campionatul": "Liga Campionilor UEFA",
-    "bet.Echipa1": "Manchester City",
-    "bet.Echipa2": "Real Madrid",
-    "bet.Pronostic": "Victorie Manchester City",
-    "bet.Cota": 2.1,
-    "bet.Incredere": "AI Confidence: 87%",
-    "bet.Stare": "IN JOC",
-    "bet.Ora": "23:30",
-    "bet.Analiza": "Manchester City a câștigat ultimele 5 meciuri împotriva echipelor din La Liga și are o formă excelentă acasă."
-  },
-  {
-    "bet.Data": "2025-03-23",
-    "bet.Campionatul": "Liga 1",
-    "bet.Echipa1": "FCSB",
-    "bet.Echipa2": "Steaua",
-    "bet.Pronostic": "Penalty acordat",
-    "bet.Cota": 3.1,
-    "bet.Incredere": "AI Confidence: 78%",
-    "bet.Stare": "IN JOC",
-    "bet.Ora": "23:30",
-    "bet.Analiza": "Steaua a avut în medie 2 penalty-uri pe meci în ultimele 5 întâlniri directe cu FCSB."
-  }
+    "bet.Profit": "100",
+    "bet.Trades": "310",
+    "bet.openTurnover": "401",
+    "bet.openTrades": "162",
+    "bet.settledTurnover": "1134",
+    }
 ]
