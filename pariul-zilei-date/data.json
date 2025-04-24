@@ -1,4 +1,4 @@
-const dashboardData = {
+{
   "balance": 500,
   "totalProfit": 100,
   "averageROI": 8.8,
